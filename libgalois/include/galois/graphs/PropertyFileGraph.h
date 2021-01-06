@@ -182,7 +182,7 @@ public:
 
   /// Determine if two PropertyFileGraphss are Equal
   bool Equals(const PropertyFileGraph* other) const {
-    return topology().Equals(other->topology()) &&
+     return topology().Equals(other->topology()) &&
            rdg_.node_table()->Equals(*other->node_table()) &&
            rdg_.edge_table()->Equals(*other->edge_table());
   }
