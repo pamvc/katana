@@ -47,7 +47,7 @@ def helper(graph, nid, deg_array, weight):
 
 
 
-def average_neighbor_degree(graph: PropertyGraph, source, target, nodes, weight):
+def average_neighbor_degree(graph: PropertyGraph, source, target, weight):
    
     calculate_degree(graph, weight_property = weight)
 
