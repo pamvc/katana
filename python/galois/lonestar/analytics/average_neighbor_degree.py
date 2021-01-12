@@ -19,7 +19,7 @@ def sum_neighbor_degree(graph, nid, result_dict, deg_array, weight):
         #get destination node 
         dst = graph.get_edge_dst(edge)
 
-        if weight = "None":
+        if weight == "None":
             sum_neighbor_degree += deg_array[nid]
 
         elif: 
@@ -51,7 +51,7 @@ def average_neighbor_degree(graph: PropertyGraph, source, target, nodes, weight)
    
     calculate_degree(graph: PropertyGraph, weight_property = weight)
 
-    if source = "in" and target = "in":
+    if source == "in" and target == "in":
         deg_array = graph.get_node_property(inPop)
     elif: 
         deg_array = graph.get_node_property(outPop)
