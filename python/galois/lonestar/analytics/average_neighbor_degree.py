@@ -49,12 +49,12 @@ def helper(graph, nid, deg_array, weight):
 
 def average_neighbor_degree(graph: PropertyGraph, source, target, nodes, weight):
    
-    calculate_degree(graph: PropertyGraph, weight_property = weight)
+    calculate_degree(graph, weight_property = weight)
 
     if source == "in" and target == "in":
         deg_array = graph.get_node_property(inPop)
     else: 
         deg_array = graph.get_node_property(outPop)
 
-    print() list(helper(graph: PropertyGraph, deg_array, weight))
+    print(list(helper(graph: PropertyGraph, deg_array, weight)))
    
