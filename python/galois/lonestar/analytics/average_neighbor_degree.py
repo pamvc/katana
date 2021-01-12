@@ -5,6 +5,7 @@ import pyarrow
 from galois.loops import do_all, do_all_operator
 from galois.property_graph import PropertyGraph
 from galois.shmem import setActiveThreads
+from .deg_count import calculate_degree
 
 #QUESTIONS: what is the legal way to get value from certain index of an array in pyarrow?
 #           what is the legal way to pass parameters? 
