@@ -56,5 +56,5 @@ def average_neighbor_degree(graph: PropertyGraph, source, target, nodes, weight)
     else: 
         deg_array = graph.get_node_property(outPop)
 
-    print(list(helper(graph: PropertyGraph, deg_array, weight)))
+    print(list(helper(graph, deg_array, weight)))
    
