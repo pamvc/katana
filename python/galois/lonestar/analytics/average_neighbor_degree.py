@@ -44,7 +44,7 @@ def helper(graph, nid, deg_array, weight):
         steal=True,
     )
 
-    return resultDict
+    return result_dict
 
 
 
