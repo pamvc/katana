@@ -12,6 +12,7 @@ from .deg_count import calculate_degree
 
 
 ##method that sums up the nonweighted or weighted degrees of the current node's neighbors
+@do_all_operator()
 def sum_neighbor_degree(graph: PropertyGraph, nid, result_dict, deg_array, weight):
     # create map that will hold the results key = node id and value = avg_neighbor_deg
     sum_neighbor_degree = 0
@@ -26,11 +27,12 @@ def sum_neighbor_degree(graph: PropertyGraph, nid, result_dict, deg_array, weigh
         else: 
             sum_neighbor_degree += (deg_array[nid] * getEdgeData(edge))
 
+        #should I use steal = true here?
+
     avg_neighbor_degree: sum_neighbor_degree() / deg_array[nid]
     result_dict[nid] = avg_neighbor_degree
 
 #helper method that fills the result dictionary where key = nid and value = its average neighbor degree 
-@do_all_operator()
 def helper(graph: PropertyGraph, deg_array, weight):
     # create map that will hold the results key = node id and value = avg_neighbor_deg
     result_dict: dict()
@@ -39,8 +41,10 @@ def helper(graph: PropertyGraph, deg_array, weight):
     do_all(
         range(num_nodes),
 
-        sum_neighbor_deg(graph, nid, result_dict, deg_array, weight),
+        #taking out nid
+        sum_neighbor_deg(graph, result_dict, deg_array, weight),
 
+        #I think I dont necessarily need this here
         steal=True,
     )
 
@@ -57,5 +61,8 @@ def average_neighbor_degree(graph: PropertyGraph, source, target, weight):
     else: 
         deg_array = graph.get_node_property("out_degree_property")
 
-    print(helper(graph, deg_array, weight))
+    result_dict = helper(graph, deg_array, weight)
+
+    for key, value in result_dict.items():
+        print(key, ' : ', value)
    
