@@ -13,13 +13,12 @@ from .deg_count import calculate_degree
 
 ##method that sums up the nonweighted or weighted degrees of the current node's neighbors
 @do_all_operator()
-def sum_neighbor_degree(graph: PropertyGraph, nid, result_array, deg_array, weight):
+def sum_neighbor_degree(graph: PropertyGraph, result_array, deg_array, weight, nid):
     # fill in map that will hold the results key = node id and value = avg_neighbor_deg
     sum_neighbor_degree = 0
     #for edge connected to curr node: 
     for edge in graph.edges(nid):
         #get destination node 
-
         ##graph.get_edge_dst gives you the distance, not the node on the other end of the edge!!!
         ## HUGE ERROR
         dst = graph.get_edge_dst(edge)
