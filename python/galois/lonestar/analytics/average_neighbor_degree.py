@@ -13,8 +13,8 @@ from .deg_count import calculate_degree
 
 ##method that sums up the nonweighted or weighted degrees of the current node's neighbors
 @do_all_operator()
-def sum_neighbor_degree(graph: PropertyGraph, nid, result_dict, deg_array, weight):
-    # create map that will hold the results key = node id and value = avg_neighbor_deg
+def sum_neighbor_degree(graph: PropertyGraph, nid, result_array, deg_array, weight):
+    # fill in map that will hold the results key = node id and value = avg_neighbor_deg
     sum_neighbor_degree = 0
     #for edge connected to curr node: 
     for edge in graph.edges(nid):
@@ -30,25 +30,29 @@ def sum_neighbor_degree(graph: PropertyGraph, nid, result_dict, deg_array, weigh
         #should I use steal = true here?
 
     avg_neighbor_degree= sum_neighbor_degree() / deg_array[nid]
-    result_dict[nid] = avg_neighbor_degree
+    result_array[nid] = avg_neighbor_degree
 
 #helper method that fills the result dictionary where key = nid and value = its average neighbor degree 
 def helper(graph: PropertyGraph, deg_array, weight):
     # create map that will hold the results key = node id and value = avg_neighbor_deg
-    result_dict= dict()
+    #result_dict= dict()
+
     num_nodes = graph.num_nodes()
+
+    result_array = [] * num_nodes
+
     #for each node in graph G
     do_all(
         range(num_nodes),
 
         #taking out nid parameter
-        sum_neighbor_degree(graph, result_dict, deg_array, weight),
+        sum_neighbor_degree(graph, result_array, deg_array, weight),
 
         #I think I dont necessarily need this here
         steal=True,
     )
 
-    return result_dict
+    return result_array
 
 
 
@@ -61,8 +65,8 @@ def average_neighbor_degree(graph: PropertyGraph, source, target, weight):
     else: 
         deg_array = graph.get_node_property("out_degree_property")
 
-    result_dict = helper(graph, deg_array, weight)
+    result_array = helper(graph, deg_array, weight)
 
-    for key, value in result_dict.items():
-        print(key, ' : ', value)
+    for node_id, avg_neighbor in enumerate(result_array):
+        print(node_id, ' : ', avg_neighbor)
    
