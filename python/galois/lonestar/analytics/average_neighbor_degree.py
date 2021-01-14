@@ -22,12 +22,13 @@ def sum_neighbor_degree(graph: PropertyGraph, result_array, deg_array, weight, n
         ##graph.get_edge_dst gives you the distance, not the node on the other end of the edge!!!
         ## HUGE ERROR
         dst = graph.get_edge_dst(edge)
-
+        deg_of_node = deg_array[dst]
         if weight == "None":
-            sum_neighbor_degree += deg_array[nid]
+            sum_neighbor_degree += deg_of_node
 
         else: 
-            sum_neighbor_degree += (deg_array[nid] * graph.getEdgeData(edge))
+            weight_of_edge = graph.getEdgeData(edge)
+            sum_neighbor_degree += (deg_of_node * weight_of_edge)
 
         #should I use steal = true here?
 
