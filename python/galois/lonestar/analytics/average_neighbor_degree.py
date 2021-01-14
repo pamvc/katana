@@ -29,13 +29,13 @@ def sum_neighbor_degree(graph: PropertyGraph, nid, result_dict, deg_array, weigh
 
         #should I use steal = true here?
 
-    avg_neighbor_degree: sum_neighbor_degree() / deg_array[nid]
+    avg_neighbor_degree= sum_neighbor_degree() / deg_array[nid]
     result_dict[nid] = avg_neighbor_degree
 
 #helper method that fills the result dictionary where key = nid and value = its average neighbor degree 
 def helper(graph: PropertyGraph, deg_array, weight):
     # create map that will hold the results key = node id and value = avg_neighbor_deg
-    result_dict: dict()
+    result_dict= dict()
     num_nodes = graph.num_nodes()
     #for each node in graph G
     do_all(
