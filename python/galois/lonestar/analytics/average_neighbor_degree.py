@@ -41,13 +41,12 @@ def helper(graph: PropertyGraph, deg_array, weight):
     num_nodes = graph.num_nodes()
 
     result_array = [0] * num_nodes
-    weight_prop = "weight_property"
 
     #for each node in graph G
     do_all(
         range(num_nodes),
         #taking out nid parameter
-        sum_neighbor_degree(graph, result_array, deg_array, weight, graph.get_edge_property(weight_prop)),
+        sum_neighbor_degree(graph, result_array, deg_array, weight, graph.get_edge_property(weight_property = weight)),
 
         #I think I dont necessarily need this here
         steal=True,
