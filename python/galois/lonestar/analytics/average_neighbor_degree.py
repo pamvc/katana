@@ -48,7 +48,7 @@ def helper(graph: PropertyGraph, deg_array, weight):
 
         #taking out nid parameter
         sum_neighbor_degree(graph, result_array, deg_array, weight,
-                graph.get_edge_property(weight_property)),
+                graph.get_edge_property("weight_property")),
 
         #I think I dont necessarily need this here
         steal=True,
