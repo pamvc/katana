@@ -25,7 +25,7 @@ def sum_neighbor_degree(graph: PropertyGraph, nid, result_array, deg_array, weig
             sum_neighbor_degree += deg_array[nid]
 
         else: 
-            sum_neighbor_degree += (deg_array[nid] * getEdgeData(edge))
+            sum_neighbor_degree += (deg_array[nid] * graph.getEdgeData(edge))
 
         #should I use steal = true here?
 
