@@ -19,6 +19,9 @@ def sum_neighbor_degree(graph: PropertyGraph, nid, result_array, deg_array, weig
     #for edge connected to curr node: 
     for edge in graph.edges(nid):
         #get destination node 
+
+        ##graph.get_edge_dst gives you the distance, not the node on the other end of the edge!!!
+        ## HUGE ERROR
         dst = graph.get_edge_dst(edge)
 
         if weight == "None":
