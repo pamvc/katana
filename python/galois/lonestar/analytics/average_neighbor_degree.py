@@ -39,7 +39,7 @@ def helper(graph: PropertyGraph, deg_array, weight):
 
     num_nodes = graph.num_nodes()
 
-    result_array = [] * num_nodes
+    result_array = [0] * num_nodes
 
     #for each node in graph G
     do_all(
