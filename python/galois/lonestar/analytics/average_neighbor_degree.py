@@ -67,7 +67,7 @@ def average_neighbor_degree(graph: PropertyGraph, source, target, weight):
     else: 
         deg_array = graph.get_node_property("out_degree_property")
 
-    result_array = helper(graph, deg_array, weight, weight_property=weight)
+    result_array = helper(graph, deg_array, weight)
 
     for node_id, avg_neighbor in enumerate(result_array):
         print(node_id, ' : ', avg_neighbor)
