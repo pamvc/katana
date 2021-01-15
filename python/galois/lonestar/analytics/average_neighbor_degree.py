@@ -20,11 +20,7 @@ from .deg_count import calculate_degree
 #respectively connects the two nodes, all of that divided by the weighted degree
 #of node k 
 
-#Most recent error when running 
-#avg_n_deg.average_neighbor_degree(g, source="in", target="in", weight=None, weight_property=None)
-# Unknown attribute 'get_edge_property' of type PropertyGraph in
-# else: 
-    #weight_array = graph.get_edge_property(weight_property)
+
 #QUESTIONS: what is the legal way to get value from certain index of an array in pyarrow?
 
 
@@ -38,7 +34,7 @@ def sum_neighbor_degree(graph: PropertyGraph, result_array, deg_array, weight, w
         #get destination node 
         dst = graph.get_edge_dst(edge)
         deg_of_dst_node = deg_array[dst]
-        if weight == "None":
+        if weight == None:
             sum_neighbor_degree += deg_of_dst_node
 
         else: 
@@ -48,17 +44,17 @@ def sum_neighbor_degree(graph: PropertyGraph, result_array, deg_array, weight, w
 
         #should I use steal = true here?
 
-    avg_neighbor_degree= sum_neighbor_degree() / deg_array[nid]
+    avg_neighbor_degree= sum_neighbor_degree / deg_array[nid]
     result_array[nid] = avg_neighbor_degree
 
 #helper method that fills the result dictionary where key = nid and value = its average neighbor degree 
 def helper(graph: PropertyGraph, deg_array, weight, weight_property):
-    # create map that will hold the results key = node id and value = avg_neighbor_deg
+    # create an array that will hold the results index = node id and value = avg_neighbor_deg
     #result_dict= dict()
 
     num_nodes = graph.num_nodes()
 
-    result_array = [0] * num_nodes
+    result_array = np.empty((num_nodes,), dtype=int)
 
     #for each node in graph G
     do_all(
