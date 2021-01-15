@@ -13,7 +13,7 @@ from .deg_count import calculate_degree
 
 ##method that sums up the nonweighted or weighted degrees of the current node's neighbors
 @do_all_operator()
-def sum_neighbor_degree(graph: PropertyGraph, result_array, deg_array, weight, nid):
+def sum_neighbor_degree(graph: PropertyGraph, result_array, deg_array, weight, nid, weight_property):
     # fill in map that will hold the results key = node id and value = avg_neighbor_deg
     sum_neighbor_degree = 0
     #for edge connected to curr node: 
@@ -25,7 +25,6 @@ def sum_neighbor_degree(graph: PropertyGraph, result_array, deg_array, weight, n
             sum_neighbor_degree += deg_of_dst_node
 
         else: 
-            weight_property = weight
             weight_array = graph.get_edge_property(weight_property)
             weight_of_edge = weight_array[edge]
             sum_neighbor_degree += (deg_of_dst_node * weight_of_edge)
@@ -36,7 +35,7 @@ def sum_neighbor_degree(graph: PropertyGraph, result_array, deg_array, weight, n
     result_array[nid] = avg_neighbor_degree
 
 #helper method that fills the result dictionary where key = nid and value = its average neighbor degree 
-def helper(graph: PropertyGraph, deg_array, weight, weight_property):
+def helper(graph: PropertyGraph, deg_array, weight):
     # create map that will hold the results key = node id and value = avg_neighbor_deg
     #result_dict= dict()
 
@@ -48,7 +47,8 @@ def helper(graph: PropertyGraph, deg_array, weight, weight_property):
     do_all(
         range(num_nodes),
         #taking out nid parameter
-        sum_neighbor_degree(graph, result_array, deg_array, weight),
+        weight_property = weight
+        sum_neighbor_degree(graph, result_array, deg_array, weight, weight_property),
 
         #I think I dont necessarily need this here
         steal=True,
