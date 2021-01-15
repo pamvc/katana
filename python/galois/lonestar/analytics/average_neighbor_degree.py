@@ -7,8 +7,25 @@ from galois.property_graph import PropertyGraph
 from galois.shmem import setActiveThreads
 from .deg_count import calculate_degree
 
+
+#ALGORITHM SUMMARY: the algorithm returns the average_neighbor_degree of each 
+#node in the graph
+#We attain the average_neighbor_degree in two different ways, depending on 
+#if the edges are weighted or not
+#if the edges are NOT weighted, then we attain the average_neighbor_degree by
+#summing the degrees of node k's neighbor and dividing that by the neighbors
+#of node k
+#if the edges ARE weighted, then we attain the average_neighbor_degree by 
+#summing the degrees of node k's neighbors times the weight of the edge that
+#respectively connects the two nodes, all of that divided by the weighted degree
+#of node k 
+
+#Most recent error when running 
+#avg_n_deg.average_neighbor_degree(g, source="in", target="in", weight=None, weight_property=None)
+# Unknown attribute 'get_edge_property' of type PropertyGraph in
+# else: 
+    #weight_array = graph.get_edge_property(weight_property)
 #QUESTIONS: what is the legal way to get value from certain index of an array in pyarrow?
-#           what is the legal way to pass parameters? 
 
 
 ##method that sums up the nonweighted or weighted degrees of the current node's neighbors
