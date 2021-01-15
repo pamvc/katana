@@ -13,7 +13,7 @@ from .deg_count import calculate_degree
 
 ##method that sums up the nonweighted or weighted degrees of the current node's neighbors
 @do_all_operator()
-def sum_neighbor_degree(graph: PropertyGraph, result_array, deg_array, weight, nid, weight_property):
+def sum_neighbor_degree(graph: PropertyGraph, result_array, deg_array, weight, weight_property, nid):
     # fill in map that will hold the results key = node id and value = avg_neighbor_deg
     sum_neighbor_degree = 0
     #for edge connected to curr node: 
